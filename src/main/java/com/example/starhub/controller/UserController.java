@@ -4,6 +4,7 @@ import com.example.starhub.code.ResponseCode;
 import com.example.starhub.dto.response.ResponseDTO;
 import com.example.starhub.dto.user.UserRegisterDTO;
 import com.example.starhub.entity.UserEntity;
+import com.example.starhub.projection.user.GetUser;
 import com.example.starhub.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,10 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/signup")
+
+    @PostMapping("/register")
     public ResponseEntity<ResponseDTO> signUp(@RequestBody UserRegisterDTO userRegisterDTO) {
-        UserEntity res = userService.register(userRegisterDTO);
+        GetUser res = userService.register(userRegisterDTO);
 
         return ResponseEntity
                 .status(ResponseCode.SUCCESS_REGISTER.getStatus().value())

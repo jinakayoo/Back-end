@@ -2,9 +2,10 @@ package com.example.starhub.service;
 
 import com.example.starhub.dto.user.UserRegisterDTO;
 import com.example.starhub.entity.UserEntity;
+import com.example.starhub.projection.user.GetUser;
 
 public interface UserService {
 
-    UserEntity register(UserRegisterDTO userRegisterDTO);
+    GetUser register(UserRegisterDTO userRegisterDTO);
 
 }
