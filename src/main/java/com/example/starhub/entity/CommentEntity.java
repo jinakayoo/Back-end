@@ -17,13 +17,13 @@ import java.time.LocalDateTime;
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comment_id; // 댓글 Id
+    private Long commentId; // 댓글 Id
 
     @Column(nullable = false)
     private String content;
 
     @CreatedDate
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @Column
     private boolean pick;

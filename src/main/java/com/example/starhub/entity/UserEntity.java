@@ -14,10 +14,10 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
-    private int user_id;
+    private int userId;
 
     @Column(unique = true, nullable = false, length = 45)
-    private String login_id;
+    private String loginId;
 
     @Column(length=100, nullable = false)
     private String password;
@@ -32,7 +32,7 @@ public class UserEntity {
     private String email;
 
     @Column(length=100, nullable = false)
-    private String phone_num;
+    private String phoneNum;
 
     @Column(length=20, nullable = false)
     private String introduction;
