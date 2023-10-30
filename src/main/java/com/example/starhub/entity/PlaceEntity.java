@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class PlaceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer place_id; // 포스트 id
+    private Integer placeId; // 포스트 id
 
     @Column(nullable = false)
     private String place;
