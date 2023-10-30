@@ -17,7 +17,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
-    private int id;
+    private int userId;
 
     @Column(unique = true, nullable = false, length = 45)
     private String loginId;
@@ -35,13 +35,14 @@ public class UserEntity {
     private String email;
 
     @Column(length=100, nullable = false)
-    private String phone_num;
+    private String phoneNum;
 
     @Column(length=20, nullable = false)
     private String introduction;
 
     @Column(nullable = true)
     private String image;
+
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
     @JsonIgnore
@@ -50,4 +51,5 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
     @JsonIgnore
     private List<CommentEntity> comments = new ArrayList<>();
+
 }

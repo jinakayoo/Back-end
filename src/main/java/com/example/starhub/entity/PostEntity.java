@@ -20,22 +20,22 @@ public class PostEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id; // 포스트 id
+    private Integer postId; // 포스트 id
 
     @Column(nullable = false, length=20)
     private String skill;
 
+    @Column(nullable = false, length=50)
+    private String title;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-
-    @Column(nullable = false, length=50)
-    private String place;
 
     @Column(nullable = false, length=20)
     private String progress;
 
     @Column(nullable = false, length=10)
-    private String people_num;
+    private String peopleNum;
 
     @Column(nullable = false, length=20)
     private String deadline;
@@ -74,5 +74,6 @@ public class PostEntity{
         this.createdAt=requestDto.getCreatedAt();
         this.user=user;
     }
+
 
 }

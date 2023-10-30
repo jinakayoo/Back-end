@@ -2,8 +2,10 @@ package com.example.starhub.entity;
 
 import com.example.starhub.dto.CommentRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -19,6 +21,7 @@ public class CommentEntity {
     private Integer id;
 
 
+
     @Column(nullable = false)
     private String content;
 
@@ -27,6 +30,7 @@ public class CommentEntity {
 
     @Column
     private boolean pick;
+
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
@@ -45,5 +49,6 @@ public class CommentEntity {
         this.user=user;
         this.post=post;
     }
+
 
 }

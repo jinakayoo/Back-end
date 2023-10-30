@@ -22,4 +22,5 @@ public class PlaceEntity {
     @JsonIgnore
     @JoinColumn(name = "place_id")
     private PostEntity post;
+
 }
