@@ -57,15 +57,9 @@ public class PostEntity{
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-
-
-//    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
-//    @JsonIgnore
-//    private List<PlaceEntity> places = new ArrayList<>();
-
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "post")
-//    List<CommentEntity> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
+    @JsonIgnore
+    private List<CommentEntity> comments = new ArrayList<>();
 
     public PostEntity(UserEntity user, PostRequestDto requestDto) {
         this.skill=requestDto.getSkill();
