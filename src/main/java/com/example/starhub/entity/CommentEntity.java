@@ -1,36 +1,39 @@
 package com.example.starhub.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-
-//    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL) // 또는 CascadeType.PERSIST 설정 가능
-//    @JsonIgnore
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    private Long comment_id; // 댓글 Id
 
     @Column(nullable = false)
     private String content;
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column
     private boolean pick;
 
 
-//    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    @JoinColumn(name = "boardId")
-//    private Board board;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private UserEntity user;
+
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private PostEntity post;
 
 }
