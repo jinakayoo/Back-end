@@ -16,7 +16,7 @@ public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer post_id; // 포스트 id
+    private Integer postId; // 포스트 id
 
     @Column(nullable = false, length=20)
     private String skill;
@@ -31,13 +31,13 @@ public class PostEntity {
     private String progress;
 
     @Column(nullable = false, length=10)
-    private String people_num;
+    private String peopleNum;
 
     @Column(nullable = false, length=20)
     private String deadline;
 
     @CreatedDate
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false, length=20)
     private String type;

@@ -22,6 +22,7 @@ public class UserController {
 
     private final UserService userService;
 
+
     @PostMapping("/register")
     public ResponseEntity<ResponseDTO> signUp(@RequestBody UserRegisterDTO userRegisterDTO) {
         GetUser res = userService.register(userRegisterDTO);
