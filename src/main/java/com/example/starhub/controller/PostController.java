@@ -31,6 +31,6 @@ public class PostController {
     public List<PostListResponseDto> getAllPosts() {return postService.findAllPost();}
 
     @GetMapping("/detail")
-    public PostResponseDto getOnePost(@PathVariable Long id){return postService.findOnePost(id);}
+    public PostResponseDto getOnePost(@PathVariable Integer id){return postService.findOnePost(id);}
 
 }

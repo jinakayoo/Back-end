@@ -30,7 +30,7 @@ public class PostService {
     }
 
     // 글 하나 가져오기
-    public PostResponseDto findOnePost(Long id) {
+    public PostResponseDto findOnePost(Integer id) {
         PostEntity post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("게시글이 없습니다")
         );
