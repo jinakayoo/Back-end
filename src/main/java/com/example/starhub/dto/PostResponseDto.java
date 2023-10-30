@@ -25,11 +25,12 @@ public class PostResponseDto {
 
     private String content;
 
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     private String user;
 
-    public PostResponseDto(UserEntity user, PostEntity post) {
+
+    public PostResponseDto(PostEntity post) {
         this.skill=post.getSkill();
         this.place=post.getPlace();
         this.progress=post.getProgress();
@@ -39,7 +40,7 @@ public class PostResponseDto {
         this.done=post.getDone();
         this.title = post.getTitle();
         this.content = post.getContent();
-        this.created_at = post.getCreated_at();
-        this.user=user.getName();
+        this.createdAt = post.getCreatedAt();
+        this.user=post.getUser().getName();
     }
 }

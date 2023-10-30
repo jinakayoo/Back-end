@@ -14,10 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostEntity {
+public class PostEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +41,7 @@ public class PostEntity {
     private String deadline;
 
     @CreatedDate
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false, length=20)
     private String type;
@@ -58,9 +57,15 @@ public class PostEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "post")
-    List<CommentEntity> comments = new ArrayList<>();
+
+
+//    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
+//    @JsonIgnore
+//    private List<PlaceEntity> places = new ArrayList<>();
+
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "post")
+//    List<CommentEntity> comments = new ArrayList<>();
 
     public PostEntity(UserEntity user, PostRequestDto requestDto) {
         this.skill=requestDto.getSkill();
@@ -72,6 +77,7 @@ public class PostEntity {
         this.done=requestDto.getDone();
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
+        this.createdAt=requestDto.getCreatedAt();
         this.user=user;
     }
 

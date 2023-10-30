@@ -22,6 +22,11 @@ public class CommentEntity {
     @Column
     private boolean pick;
 
+//    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    @JoinColumn(name = "boardId")
+//    private PostEntity post;
+
 
 //    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @JsonIgnore

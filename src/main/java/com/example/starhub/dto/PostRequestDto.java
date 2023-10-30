@@ -19,7 +19,6 @@ public class PostRequestDto {
 
     private String deadline;
 
-
     private String type;
 
     private Boolean done;
@@ -27,4 +26,8 @@ public class PostRequestDto {
     private String title;
 
     private String content;
+
+    private LocalDateTime createdAt;
+
+    private String user;
 }
