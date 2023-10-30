@@ -16,16 +16,16 @@ public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id; // 포스트 id
+    private Integer post_id; // 포스트 id
 
     @Column(nullable = false, length=20)
     private String skill;
 
+    @Column(nullable = false, length=50)
+    private String title;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-
-    @Column(nullable = false, length=50)
-    private String place;
 
     @Column(nullable = false, length=20)
     private String progress;
@@ -46,6 +46,6 @@ public class PostEntity {
     private Boolean done;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    private UserEntity userId;
+    private UserEntity user;
 
 }

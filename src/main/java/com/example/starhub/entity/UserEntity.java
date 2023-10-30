@@ -14,10 +14,10 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
-    private int id;
+    private int user_id;
 
     @Column(unique = true, nullable = false, length = 45)
-    private String loginId;
+    private String login_id;
 
     @Column(length=100, nullable = false)
     private String password;
@@ -40,5 +40,4 @@ public class UserEntity {
     @Column(nullable = true)
     private String image;
 
-    //OneToMany
 }
