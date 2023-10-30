@@ -13,11 +13,6 @@ public class CommentEntity {
     private Long id;
 
 
-//    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL) // 또는 CascadeType.PERSIST 설정 가능
-//    @JsonIgnore
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
     @Column(nullable = false)
     private String content;
 
