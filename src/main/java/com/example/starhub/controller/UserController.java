@@ -2,6 +2,7 @@ package com.example.starhub.controller;
 
 import com.example.starhub.code.ResponseCode;
 import com.example.starhub.dto.response.ResponseDTO;
+import com.example.starhub.dto.user.UserLoginDTO;
 import com.example.starhub.dto.user.UserRegisterDTO;
 import com.example.starhub.entity.UserEntity;
 import com.example.starhub.projection.user.GetUser;
@@ -34,6 +35,15 @@ public class UserController {
         return ResponseEntity
                 .status(ResponseCode.SUCCESS_REGISTER.getStatus().value())
                 .body(new ResponseDTO(ResponseCode.SUCCESS_REGISTER, res));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ResponseDTO> login(@RequestBody UserLoginDTO userLoginDTO) {
+        GetUser res = userService.login(userLoginDTO);
+
+        return ResponseEntity
+                .status(ResponseCode.SUCCESS_LOGIN.getStatus().value())
+                .body(new ResponseDTO(ResponseCode.SUCCESS_LOGIN, res));
     }
 
 }

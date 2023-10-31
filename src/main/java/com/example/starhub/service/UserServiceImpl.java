@@ -1,7 +1,11 @@
 package com.example.starhub.service;
 
+import com.example.starhub.code.ErrorCode;
+import com.example.starhub.dto.user.UserLoginDTO;
 import com.example.starhub.dto.user.UserRegisterDTO;
 import com.example.starhub.entity.UserEntity;
+import com.example.starhub.exception.LoginIdNotFoundException;
+import com.example.starhub.exception.LoginPasswordNotMatchException;
 import com.example.starhub.projection.user.GetUser;
 import com.example.starhub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,10 +52,25 @@ public class UserServiceImpl implements UserService{
 
             UserEntity createUser = userRepository.save(user);
             return EntityToProjectionUser(createUser);
+
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public GetUser login(UserLoginDTO userLoginDTO) {
+        Optional<UserEntity> findUser = userRepository.findByLoginId(userLoginDTO.loginId);
+
+        // 아이디 존재하는지 확인
+        if(!findUser.isPresent()) throw new LoginIdNotFoundException(ErrorCode.USERID_NOT_FOUND);
+        // 비밀번호가 같은지 확인
+        else if(!findUser.get().getPassword().equals(userLoginDTO.password)) throw new LoginPasswordNotMatchException(ErrorCode.PASSWORD_NOT_MATCH);
+
+
+        GetUser user = EntityToProjectionUser(findUser.get());
+        return user;
     }
 
 
@@ -85,6 +105,11 @@ public class UserServiceImpl implements UserService{
             @Override
             public String getIntroduction() {
                 return user.getIntroduction();
+            }
+
+            @Override
+            public byte[] getImageData() {
+                return user.getImageData();
             }
         };
 
