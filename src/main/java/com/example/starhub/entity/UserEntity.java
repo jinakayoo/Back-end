@@ -1,8 +1,11 @@
 package com.example.starhub.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -40,4 +43,14 @@ public class UserEntity {
     @Lob
     @Column(name = "image_data")
     private byte[] imageData;
+
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
+    @JsonIgnore
+    private List<PostEntity> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
+    @JsonIgnore
+    private List<CommentEntity> comments = new ArrayList<>();
+
 }

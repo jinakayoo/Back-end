@@ -1,7 +1,11 @@
 package com.example.starhub.entity;
 
+import com.example.starhub.dto.CommentRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -9,15 +13,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-@Entity
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId; // 댓글 Id
+    private Integer id;
+
+
 
     @Column(nullable = false)
     private String content;
@@ -29,11 +32,23 @@ public class CommentEntity {
     private boolean pick;
 
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "post_id")
+    private PostEntity post;
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    public CommentEntity(UserEntity user,PostEntity post, CommentRequestDto requestDto){
+        this.content=requestDto.getContent();
+        this.createdAt=requestDto.getCreatedAt();
+        this.pick= requestDto.isPick();
+        this.user=user;
+        this.post=post;
+    }
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    private PostEntity post;
 
 }

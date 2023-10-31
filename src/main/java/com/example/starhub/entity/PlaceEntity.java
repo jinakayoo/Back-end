@@ -1,31 +1,26 @@
 package com.example.starhub.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-@Getter
-@Setter
-@Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class PlaceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer placeId; // 포스트 id
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=20)
     private String place;
 
-    @Column(nullable = false)
-    private float lat;
+    @Column(nullable = false, length=20)
+    private Float latitude;
 
-    @Column(nullable = false)
-    private float lng;
+    @Column(nullable = false, length=20)
+    private Float longtitude;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL) // 또는 CascadeType.PERSIST 설정 가능
+    @JsonIgnore
+    @JoinColumn(name = "place_id")
     private PostEntity post;
-
-
 
 }
