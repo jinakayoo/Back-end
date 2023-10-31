@@ -8,5 +8,5 @@ public interface GetUser {
     String getEmail();
     String getPhoneNum();
     String getIntroduction();
-
+    byte[] getImageData();
 }

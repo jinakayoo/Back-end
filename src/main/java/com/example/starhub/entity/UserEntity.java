@@ -40,8 +40,9 @@ public class UserEntity {
     @Column(length=20, nullable = false)
     private String introduction;
 
-    @Column(nullable = true)
-    private String image;
+    @Lob
+    @Column(name = "image_data")
+    private byte[] imageData;
 
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
