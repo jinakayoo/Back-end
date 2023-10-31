@@ -37,7 +37,7 @@ public class UserEntity {
     @Column(length=20, nullable = false)
     private String introduction;
 
-    @Column(nullable = true)
-    private String image;
-
+    @Lob
+    @Column(name = "image_data")
+    private byte[] imageData;
 }

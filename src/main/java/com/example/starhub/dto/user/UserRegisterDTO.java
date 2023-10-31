@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +13,6 @@ public class UserRegisterDTO {
 
     @NotNull
     private String loginId;
-
     @NotNull
     private String password;
 
@@ -30,8 +30,5 @@ public class UserRegisterDTO {
 
     @NotNull
     private String introduction;
-
-//    @NotNull
-//    private String image;
 
 }
