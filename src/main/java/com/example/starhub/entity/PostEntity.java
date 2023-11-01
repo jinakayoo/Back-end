@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.apache.catalina.User;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class PostEntity{
 
     @Id
@@ -72,7 +74,7 @@ public class PostEntity{
         this.done=requestDto.getDone();
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
-        //this.createdAt=requestDto.getCreatedAt();
+        this.createdAt=requestDto.getCreatedAt();
         this.user = user;
     }
 

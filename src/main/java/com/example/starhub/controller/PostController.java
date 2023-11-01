@@ -31,11 +31,13 @@ public class PostController {
     @GetMapping("/list")
     public List<PostListResponseDto> getAllPosts() {return postService.findAllPost();}
 
+    //경로변수
 //    @GetMapping("/detail/{post_id}")
 //    public PostResponseDto getOnePost(@PathVariable("post_id") Integer post_id) {
 //        return postService.findOnePost(post_id);
 //    }
 
+    //쿼리변수
     @GetMapping("/detail")
     public PostResponseDto getOnePost(@RequestParam("post_id") Integer post_id) {
         return postService.findOnePost(post_id);

@@ -36,6 +36,7 @@ public class PostListResponseDto {
         this.peopleNum=post.getPeopleNum();
         this.deadline=post.getDeadline();
         this.type=post.getType();
+        this.createdAt=post.getCreatedAt();
         this.title = post.getTitle();
     }
 
