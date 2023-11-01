@@ -10,7 +10,7 @@ public class PlaceEntity {
     private Integer id;
 
     @Column(nullable = false, length=20)
-    private String place;
+    private String placeName;
 
     @Column(nullable = false, length=20)
     private Float latitude;
