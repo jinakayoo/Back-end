@@ -46,33 +46,34 @@ public class PostEntity{
     @Column(nullable = false, length=20)
     private String type;
 
+    @Column(nullable = false, length=20)
+    private String place;
+
     @Column
     private Boolean done;
 
-    @Column(nullable = false, length=20)
-    private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL) // 또는 CascadeType.PERSIST 설정 가능
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST) // 또는 CascadeType.PERSIST 설정 가능
     @JsonIgnore
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private UserEntity user;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
-    @JsonIgnore
-    private List<CommentEntity> comments = new ArrayList<>();
+//    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
+//    @JsonIgnore
+//    private List<CommentEntity> comments = new ArrayList<>();
 
     public PostEntity(UserEntity user, PostRequestDto requestDto) {
         this.skill=requestDto.getSkill();
         this.place=requestDto.getPlace();
         this.progress=requestDto.getProgress();
-        this.people_num=requestDto.getPeople_num();
+        this.peopleNum=requestDto.getPeopleNum();
         this.deadline=requestDto.getDeadline();
         this.type=requestDto.getType();
         this.done=requestDto.getDone();
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
-        this.createdAt=requestDto.getCreatedAt();
-        this.user=user;
+        //this.createdAt=requestDto.getCreatedAt();
+        this.user = user;
     }
 
 

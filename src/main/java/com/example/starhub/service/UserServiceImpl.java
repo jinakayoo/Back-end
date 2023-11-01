@@ -30,8 +30,9 @@ public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
 
-    @Value("${upload.dir}")
-    private String uploadDir;
+    //김가빈이 임의로 주석처리한거임
+//    @Value("${upload.dir}")
+//    private String uploadDir;
 
     @Override
     public GetUser register(UserRegisterDTO userRegisterDTO, MultipartFile image) {
@@ -65,7 +66,7 @@ public class UserServiceImpl implements UserService{
 
         // 아이디 존재하는지 확인
         if(!findUser.isPresent()) throw new LoginIdNotFoundException(ErrorCode.USERID_NOT_FOUND);
-        // 비밀번호가 같은지 확인
+            // 비밀번호가 같은지 확인
         else if(!findUser.get().getPassword().equals(userLoginDTO.password)) throw new LoginPasswordNotMatchException(ErrorCode.PASSWORD_NOT_MATCH);
 
 

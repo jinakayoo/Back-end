@@ -2,9 +2,15 @@ package com.example.starhub.dto;
 
 import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostResponseDto {
     private String skill;
 
@@ -12,7 +18,7 @@ public class PostResponseDto {
 
     private String progress;
 
-    private String people_num;
+    private String peopleNum;
 
     private String deadline;
 
@@ -27,20 +33,20 @@ public class PostResponseDto {
 
     private LocalDateTime createdAt;
 
-    private String user;
+    private String userName;
 
 
     public PostResponseDto(PostEntity post) {
         this.skill=post.getSkill();
         this.place=post.getPlace();
         this.progress=post.getProgress();
-        this.people_num=post.getPeople_num();
+        this.peopleNum=post.getPeopleNum();
         this.deadline=post.getDeadline();
         this.type=post.getType();
         this.done=post.getDone();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.createdAt = post.getCreatedAt();
-        this.user=post.getUser().getName();
+        this.userName=post.getUser().getName();
     }
 }

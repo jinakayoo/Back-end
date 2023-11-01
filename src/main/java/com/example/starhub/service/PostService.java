@@ -19,10 +19,21 @@ public class PostService {
     private final PostRepository postRepository;
 
 
-    public PostResponseDto createPost(UserEntity user, PostRequestDto requestDto){
-        PostEntity post=new PostEntity(user, requestDto);
+//    public PostResponseDto createPost(UserEntity user, PostRequestDto requestDto){
+//        user = userRepository.findById(requestDto.getUserId()).orElse(null);
+//        PostEntity post=new PostEntity(user, requestDto);
+//        postRepository.save(post);
+//        return new PostResponseDto(post);
+//    }
+
+    public PostResponseDto createPost(PostRequestDto requestDto){
+
+        Integer userId = requestDto.getUserId();
+        UserEntity user = userRepository.findById(userId).orElse(null);
+        PostEntity post = new PostEntity(user, requestDto);
         postRepository.save(post);
         return new PostResponseDto(post);
+
     }
 
     public List<PostListResponseDto> findAllPost(){

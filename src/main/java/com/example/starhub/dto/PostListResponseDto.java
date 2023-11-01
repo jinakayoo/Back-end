@@ -17,7 +17,7 @@ public class PostListResponseDto {
 
     private String progress;
 
-    private String people_num;
+    private String peopleNum;
 
     private String deadline;
 
@@ -25,11 +25,15 @@ public class PostListResponseDto {
 
     private String title;
 
+    private LocalDateTime createdAt;
+
+    private String userName;
+
     public PostListResponseDto(PostEntity post) {
         this.skill=post.getSkill();
         this.place=post.getPlace();
         this.progress=post.getProgress();
-        this.people_num=post.getPeople_num();
+        this.peopleNum=post.getPeopleNum();
         this.deadline=post.getDeadline();
         this.type=post.getType();
         this.title = post.getTitle();

@@ -23,8 +23,8 @@ public class PostController {
         this.userRepository=userRepository;
     }
     @PostMapping("/create")
-    public PostResponseDto createPost(UserEntity user, @RequestBody PostRequestDto requestDto){
-        return postService.createPost(user, requestDto);
+    public PostResponseDto createPost(@RequestBody PostRequestDto requestDto){
+        return postService.createPost(requestDto);
     }
 
     @GetMapping("/list")
