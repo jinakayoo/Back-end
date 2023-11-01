@@ -21,17 +21,11 @@ public class CommentRequestDto {
 
     private boolean pick;
 
-    private int post_id;
+    private Integer postId;
 
-    private String user;
+    private Integer userId;
 
-//    public CommentRequestDto(CommentEntity comment){
-//        this.content=comment.getContent();
-//        this.createdAt=comment.getCreatedAt();
-//        this.pick=comment.isPick();
-//        this.post_id=comment.getPost().getId();
-//        this.user=comment.getUser().getName();
-//    }
+
 
 
 }

@@ -2,6 +2,7 @@ package com.example.starhub.controller;
 
 import com.example.starhub.dto.CommentRequestDto;
 import com.example.starhub.dto.CommentResponseDto;
+import com.example.starhub.dto.PostResponseDto;
 import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
 import com.example.starhub.repository.PostRepository;
@@ -26,13 +27,15 @@ public class CommentController {
     }
 
     @PostMapping("/create")
-    public CommentResponseDto createBoard(UserEntity user, @RequestParam("post_id") PostEntity post_id,@RequestBody CommentRequestDto requestDto) {
-        return commentService.createComment(user, post_id,requestDto);
+    public CommentResponseDto createComment(@RequestBody CommentRequestDto requestDto) {
+        return commentService.createComment(requestDto);
     }
 
     // 댓글 목록 조회
+    //쿼리변수
     @GetMapping("/list")
-    public List<CommentResponseDto> getAllComments(@PathVariable Integer id) {
-        return commentService.readAllComments(id);
+    public List<CommentResponseDto> readAllComments(@RequestParam("post_id") Integer post_id) {
+        return commentService.readAllComments(post_id);
     }
+
 }

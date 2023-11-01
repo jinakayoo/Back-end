@@ -15,7 +15,7 @@ public class PostRequestDto {
 
     private String progress;
 
-    private String people_num;
+    private String peopleNum;
 
     private String deadline;
 
@@ -29,5 +29,5 @@ public class PostRequestDto {
 
     private LocalDateTime createdAt;
 
-    private String user;
+    private Integer userId;
 }

@@ -21,20 +21,24 @@ public class CommentService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    @Transactional
-    public CommentResponseDto createComment(UserEntity user, Integer id,CommentRequestDto requestDto){
-        PostEntity post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("조회 실패"));
+    //@Transactional
+    public CommentResponseDto createComment(CommentRequestDto requestDto){
+        Integer userId = requestDto.getUserId();
+        UserEntity user = userRepository.findById(userId).orElseThrow(
+                () -> new IllegalArgumentException("사용자 조회 실패"));
+        Integer postId = requestDto.getPostId();
+        PostEntity post = postRepository.findById(postId).orElseThrow(
+                () -> new IllegalArgumentException("포스트 조회 실패"));
         CommentEntity comment = new CommentEntity(user, post, requestDto);
         commentRepository.save(comment);
-        CommentResponseDto commentResponseDto = new CommentResponseDto(comment);
-        return commentResponseDto;
+        //CommentResponseDto commentResponseDto = new CommentResponseDto(comment);
+        return new CommentResponseDto(comment);
     }
 
 
     // 전체 댓글 조회
     @Transactional
     public List<CommentResponseDto> readAllComments(Integer id) {
-        return commentRepository.findAllByBoardId(id);
+        return commentRepository.findAllByPostPostId(id);
     }
 }

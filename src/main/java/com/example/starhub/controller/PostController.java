@@ -3,6 +3,7 @@ package com.example.starhub.controller;
 import com.example.starhub.dto.PostListResponseDto;
 import com.example.starhub.dto.PostRequestDto;
 import com.example.starhub.dto.PostResponseDto;
+import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
 import com.example.starhub.repository.UserRepository;
 import com.example.starhub.service.PostService;
@@ -23,14 +24,22 @@ public class PostController {
         this.userRepository=userRepository;
     }
     @PostMapping("/create")
-    public PostResponseDto createPost(UserEntity user, @RequestBody PostRequestDto requestDto){
-        return postService.createPost(user, requestDto);
+    public PostResponseDto createPost(@RequestBody PostRequestDto requestDto){
+        return postService.createPost(requestDto);
     }
 
     @GetMapping("/list")
     public List<PostListResponseDto> getAllPosts() {return postService.findAllPost();}
 
-    @GetMapping("/detail")
-    public PostResponseDto getOnePost(@PathVariable Integer id){return postService.findOnePost(id);}
+    //경로변수
+//    @GetMapping("/detail/{post_id}")
+//    public PostResponseDto getOnePost(@PathVariable("post_id") Integer post_id) {
+//        return postService.findOnePost(post_id);
+//    }
 
+    //쿼리변수
+    @GetMapping("/detail")
+    public PostResponseDto getOnePost(@RequestParam("post_id") Integer post_id) {
+        return postService.findOnePost(post_id);
+    }
 }
