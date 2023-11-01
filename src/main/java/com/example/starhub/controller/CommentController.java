@@ -32,6 +32,7 @@ public class CommentController {
     }
 
     // 댓글 목록 조회
+    //쿼리변수
     @GetMapping("/list")
     public List<CommentResponseDto> readAllComments(@RequestParam("post_id") Integer post_id) {
         return commentService.readAllComments(post_id);
