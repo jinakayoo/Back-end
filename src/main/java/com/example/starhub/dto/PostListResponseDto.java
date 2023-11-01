@@ -38,6 +38,7 @@ public class PostListResponseDto {
         this.type=post.getType();
         this.createdAt=post.getCreatedAt();
         this.title = post.getTitle();
+        this.userName=post.getUser().getName();
     }
 
 }
