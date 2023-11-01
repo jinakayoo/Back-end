@@ -3,6 +3,7 @@ package com.example.starhub.controller;
 import com.example.starhub.dto.PostListResponseDto;
 import com.example.starhub.dto.PostRequestDto;
 import com.example.starhub.dto.PostResponseDto;
+import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
 import com.example.starhub.repository.UserRepository;
 import com.example.starhub.service.PostService;
@@ -30,7 +31,13 @@ public class PostController {
     @GetMapping("/list")
     public List<PostListResponseDto> getAllPosts() {return postService.findAllPost();}
 
-    @GetMapping("/detail")
-    public PostResponseDto getOnePost(@PathVariable Integer id){return postService.findOnePost(id);}
+//    @GetMapping("/detail/{post_id}")
+//    public PostResponseDto getOnePost(@PathVariable("post_id") Integer post_id) {
+//        return postService.findOnePost(post_id);
+//    }
 
+    @GetMapping("/detail")
+    public PostResponseDto getOnePost(@RequestParam("post_id") Integer post_id) {
+        return postService.findOnePost(post_id);
+    }
 }
