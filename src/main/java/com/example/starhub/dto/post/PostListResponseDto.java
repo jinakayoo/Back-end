@@ -14,6 +14,8 @@ public class PostListResponseDto {
     private String skill;
 
     private String place;
+    private Float latitude;
+    private Float longitude;
 
     private String progress;
 
@@ -32,6 +34,8 @@ public class PostListResponseDto {
     public PostListResponseDto(PostEntity post) {
         this.skill=post.getSkill();
         this.place=post.getPlace();
+        this.longitude=post.getLongitude();
+        this.latitude=post.getLatitude();
         this.progress=post.getProgress();
         this.peopleNum=post.getPeopleNum();
         this.deadline=post.getDeadline();
