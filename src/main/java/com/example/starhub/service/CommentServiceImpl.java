@@ -5,6 +5,7 @@ import com.example.starhub.dto.comment.CommentResponseDto;
 import com.example.starhub.entity.CommentEntity;
 import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
+import com.example.starhub.projection.comment.GetCommentList;
 import com.example.starhub.repository.CommentRepository;
 import com.example.starhub.repository.PostRepository;
 import com.example.starhub.repository.UserRepository;
@@ -12,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -40,5 +43,52 @@ public class CommentServiceImpl implements CommentService{
     @Transactional
     public List<CommentResponseDto> readAllComments(Integer id) {
         return commentRepository.findAllByPostPostId(id);
+    }
+
+    @Override
+    public List<GetCommentList> pickComments(List<Integer> commentIdList) {
+        List<CommentEntity> commentList = commentRepository.findAllById(commentIdList);
+        for (CommentEntity comment : commentList) {
+            comment.setPick(true);
+            commentRepository.save(comment);
+        }
+
+        List<GetCommentList> result = convertToGetCommentList(commentList);
+        return result;
+    }
+
+    private List<GetCommentList> convertToGetCommentList(List<CommentEntity> comments) {
+        return comments.stream()
+                .map(this::convertToGetCommentList)
+                .collect(Collectors.toList());
+    }
+
+    private GetCommentList convertToGetCommentList(CommentEntity commentEntity) {
+        return new GetCommentList() {
+            @Override
+            public Integer getId() {
+                return commentEntity.getId();
+            }
+
+            @Override
+            public String getContent() {
+                return commentEntity.getContent();
+            }
+
+            @Override
+            public LocalDateTime getCreatedAt() {
+                return commentEntity.getCreatedAt();
+            }
+
+            @Override
+            public UserEntity getUser() {
+                return new UserEntity() {
+                    @Override
+                    public String getName() {
+                        return commentEntity.getUser().getName();
+                    }
+                };
+            }
+        };
     }
 }
