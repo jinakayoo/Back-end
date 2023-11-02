@@ -48,6 +48,12 @@ public class PostEntity{
     @Column(nullable = false, length=20)
     private String place;
 
+    @Column(nullable = false)
+    private Float latitude;
+
+    @Column(nullable = false)
+    private Float longitude;
+
     @Column
     private Boolean done;
 
@@ -64,6 +70,8 @@ public class PostEntity{
     public PostEntity(UserEntity user, PostRequestDto requestDto) {
         this.skill=requestDto.getSkill();
         this.place=requestDto.getPlace();
+        this.longitude=requestDto.getLongitude();
+        this.latitude=requestDto.getLatitude();
         this.progress=requestDto.getProgress();
         this.peopleNum=requestDto.getPeopleNum();
         this.deadline=requestDto.getDeadline();

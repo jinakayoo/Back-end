@@ -12,6 +12,8 @@ public class PostRequestDto {
     private String skill;
 
     private String place;
+    private Float latitude;
+    private Float longitude;
 
     private String progress;
 
