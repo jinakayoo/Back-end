@@ -1,13 +1,10 @@
 package com.example.starhub.controller;
 
-import com.example.starhub.dto.PostListResponseDto;
-import com.example.starhub.dto.PostRequestDto;
-import com.example.starhub.dto.PostResponseDto;
-import com.example.starhub.entity.PostEntity;
-import com.example.starhub.entity.UserEntity;
+import com.example.starhub.dto.post.PostListResponseDto;
+import com.example.starhub.dto.post.PostRequestDto;
+import com.example.starhub.dto.post.PostResponseDto;
 import com.example.starhub.repository.UserRepository;
 import com.example.starhub.service.PostService;
-import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

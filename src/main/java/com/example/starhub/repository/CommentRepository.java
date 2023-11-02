@@ -1,6 +1,6 @@
 package com.example.starhub.repository;
 
-import com.example.starhub.dto.CommentResponseDto;
+import com.example.starhub.dto.comment.CommentResponseDto;
 import com.example.starhub.entity.CommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,6 +1,6 @@
 package com.example.starhub.repository;
 
-import com.example.starhub.dto.PostListResponseDto;
+import com.example.starhub.dto.post.PostListResponseDto;
 import com.example.starhub.entity.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
