@@ -1,16 +1,13 @@
 package com.example.starhub.entity;
 
-import com.example.starhub.dto.PostRequestDto;
+import com.example.starhub.dto.post.PostRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.apache.catalina.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

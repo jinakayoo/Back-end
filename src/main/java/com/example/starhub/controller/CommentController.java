@@ -1,10 +1,7 @@
 package com.example.starhub.controller;
 
-import com.example.starhub.dto.CommentRequestDto;
-import com.example.starhub.dto.CommentResponseDto;
-import com.example.starhub.dto.PostResponseDto;
-import com.example.starhub.entity.PostEntity;
-import com.example.starhub.entity.UserEntity;
+import com.example.starhub.dto.comment.CommentRequestDto;
+import com.example.starhub.dto.comment.CommentResponseDto;
 import com.example.starhub.repository.PostRepository;
 import com.example.starhub.repository.UserRepository;
 import com.example.starhub.service.CommentService;

@@ -1,4 +1,4 @@
-package com.example.starhub.dto;
+package com.example.starhub.dto.post;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

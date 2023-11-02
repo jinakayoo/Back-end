@@ -1,4 +1,4 @@
-package com.example.starhub.dto;
+package com.example.starhub.dto.post;
 
 import com.example.starhub.entity.PostEntity;
 import lombok.AllArgsConstructor;

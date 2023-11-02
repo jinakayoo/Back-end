@@ -1,4 +1,4 @@
-package com.example.starhub.dto;
+package com.example.starhub.dto.comment;
 
 import com.example.starhub.entity.CommentEntity;
 import lombok.AllArgsConstructor;

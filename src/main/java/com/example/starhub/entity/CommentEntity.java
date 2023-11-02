@@ -1,6 +1,6 @@
 package com.example.starhub.entity;
 
-import com.example.starhub.dto.CommentRequestDto;
+import com.example.starhub.dto.comment.CommentRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -10,7 +10,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
