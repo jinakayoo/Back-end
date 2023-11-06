@@ -9,6 +9,7 @@ import com.example.starhub.projection.comment.GetCommentList;
 import com.example.starhub.repository.PostRepository;
 import com.example.starhub.repository.UserRepository;
 import com.example.starhub.service.CommentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +48,15 @@ public class CommentController {
         return ResponseEntity
                 .status(ResponseCode.SUCCESS_PICK_COMMENT.getStatus().value())
                 .body(new ResponseDTO(ResponseCode.SUCCESS_PICK_COMMENT, res));
+    }
+
+    @GetMapping("/pick/list")
+    public ResponseEntity<List<GetCommentList>> getPickedComments() {
+        // CommentService를 사용하여 픽한 댓글 정보를 가져오는 메서드 호출
+        List<GetCommentList> pickedComments = commentService.getPickedComments();
+
+        // ResponseEntity를 사용하여 응답 생성
+        return new ResponseEntity<>(pickedComments, HttpStatus.OK);
     }
 
 }
