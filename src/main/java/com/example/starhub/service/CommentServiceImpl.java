@@ -53,8 +53,15 @@ public class CommentServiceImpl implements CommentService{
             commentRepository.save(comment);
         }
 
-        List<GetCommentList> result = convertToGetCommentList(commentList);
+        List<CommentEntity> pickedComments = commentRepository.findAllByIdInAndPickIsTrue(commentIdList);
+
+        List<GetCommentList> result = convertToGetCommentList(pickedComments);
         return result;
+    }
+
+    public List<GetCommentList> getPickedComments() {
+        List<CommentEntity> pickedComments = commentRepository.findByPickIsTrue();
+        return convertToGetCommentList(pickedComments);
     }
 
     private List<GetCommentList> convertToGetCommentList(List<CommentEntity> comments) {
@@ -65,20 +72,6 @@ public class CommentServiceImpl implements CommentService{
 
     private GetCommentList convertToGetCommentList(CommentEntity commentEntity) {
         return new GetCommentList() {
-            @Override
-            public Integer getId() {
-                return commentEntity.getId();
-            }
-
-            @Override
-            public String getContent() {
-                return commentEntity.getContent();
-            }
-
-            @Override
-            public LocalDateTime getCreatedAt() {
-                return commentEntity.getCreatedAt();
-            }
 
             @Override
             public UserEntity getUser() {
@@ -87,8 +80,35 @@ public class CommentServiceImpl implements CommentService{
                     public String getName() {
                         return commentEntity.getUser().getName();
                     }
+
+                    @Override
+                    public String getIntroduction() {
+                        return commentEntity.getUser().getIntroduction();
+                    }
+
+                    @Override
+                    public String getEmail() {
+                        return commentEntity.getUser().getEmail();
+                    }
+
+                    @Override
+                    public byte[] getImageData() {
+                        return commentEntity.getUser().getImageData();
+                    }
+
+                    @Override
+                    public String getPhoneNum() {
+                        return commentEntity.getUser().getPhoneNum();
+                    }
+
+                    @Override
+                    public int getAge() {
+                        return commentEntity.getUser().getAge();
+                    }
                 };
             }
         };
     }
+
+
 }

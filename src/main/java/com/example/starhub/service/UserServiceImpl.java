@@ -1,8 +1,10 @@
 package com.example.starhub.service;
 
 import com.example.starhub.code.ErrorCode;
+import com.example.starhub.dto.post.PostResponseDto;
 import com.example.starhub.dto.user.UserLoginDTO;
 import com.example.starhub.dto.user.UserRegisterDTO;
+import com.example.starhub.entity.PostEntity;
 import com.example.starhub.entity.UserEntity;
 import com.example.starhub.exception.LoginIdNotFoundException;
 import com.example.starhub.exception.LoginPasswordNotMatchException;
@@ -14,6 +16,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -116,6 +120,8 @@ public class UserServiceImpl implements UserService{
 
         return userInfo;
     }
+
+
 
 
 }

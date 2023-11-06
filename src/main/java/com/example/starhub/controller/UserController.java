@@ -1,6 +1,7 @@
 package com.example.starhub.controller;
 
 import com.example.starhub.code.ResponseCode;
+import com.example.starhub.dto.post.PostResponseDto;
 import com.example.starhub.dto.response.ResponseDTO;
 import com.example.starhub.dto.user.UserLoginDTO;
 import com.example.starhub.dto.user.UserRegisterDTO;
@@ -45,5 +46,7 @@ public class UserController {
                 .status(ResponseCode.SUCCESS_LOGIN.getStatus().value())
                 .body(new ResponseDTO(ResponseCode.SUCCESS_LOGIN, res));
     }
+
+
 
 }
