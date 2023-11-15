@@ -39,29 +39,24 @@ public class UserServiceImpl implements UserService{
 //    private String uploadDir;
 
     @Override
-    public GetUser register(UserRegisterDTO userRegisterDTO, MultipartFile image) {
+    public GetUser register(UserRegisterDTO userRegisterDTO) {
 
-        try {
-            byte[] imageBytes = image.getBytes();
+        //            byte[] imageBytes = image.getBytes();
 
-            UserEntity user = UserEntity.builder()
-                    .loginId(userRegisterDTO.getLoginId())
-                    .password(userRegisterDTO.getPassword())
-                    .name(userRegisterDTO.getName())
-                    .age(userRegisterDTO.getAge())
-                    .email(userRegisterDTO.getEmail())
-                    .phoneNum(userRegisterDTO.getPhoneNum())
-                    .introduction(userRegisterDTO.getIntroduction())
-                    .imageData(imageBytes)
-                    .build();
+        UserEntity user = UserEntity.builder()
+                .loginId(userRegisterDTO.getLoginId())
+                .password(userRegisterDTO.getPassword())
+                .name(userRegisterDTO.getName())
+                .age(userRegisterDTO.getAge())
+                .email(userRegisterDTO.getEmail())
+                .phoneNum(userRegisterDTO.getPhoneNum())
+                .introduction(userRegisterDTO.getIntroduction())
+//                    .imageData(imageBytes)
+                .build();
 
-            UserEntity createUser = userRepository.save(user);
-            return EntityToProjectionUser(createUser);
+        UserEntity createUser = userRepository.save(user);
+        return EntityToProjectionUser(createUser);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override
@@ -112,10 +107,10 @@ public class UserServiceImpl implements UserService{
                 return user.getIntroduction();
             }
 
-            @Override
-            public byte[] getImageData() {
-                return user.getImageData();
-            }
+//            @Override
+//            public byte[] getImageData() {
+//                return user.getImageData();
+//            }
         };
 
         return userInfo;

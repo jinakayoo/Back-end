@@ -91,10 +91,10 @@ public class CommentServiceImpl implements CommentService{
                         return commentEntity.getUser().getEmail();
                     }
 
-                    @Override
-                    public byte[] getImageData() {
-                        return commentEntity.getUser().getImageData();
-                    }
+//                    @Override
+//                    public byte[] getImageData() {
+//                        return commentEntity.getUser().getImageData();
+//                    }
 
                     @Override
                     public String getPhoneNum() {

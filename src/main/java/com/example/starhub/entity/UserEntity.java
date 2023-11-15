@@ -40,18 +40,13 @@ public class UserEntity {
     @Column(length=20, nullable = false)
     private String introduction;
 
-    @Lob
-    @Column(name = "image_data")
-    private byte[] imageData;
+//    @Lob
+//    @Column(name = "image_data")
+//    private byte[] imageData;
 
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
     @JsonIgnore
     private List<PostEntity> posts = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // 양방향 관계 매핑된 것. 읽기 전용
-//    @JsonIgnore
-//    private List<CommentEntity> comments = new ArrayList<>();
-
 
 }
