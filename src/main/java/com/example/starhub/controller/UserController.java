@@ -26,12 +26,13 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseDTO> register(@RequestParam("info") String userRegisterDTO,
-                                                @RequestParam("image") MultipartFile image) throws JsonProcessingException {
+    public ResponseEntity<ResponseDTO> register(@RequestParam("info") String userRegisterDTO)throws JsonProcessingException
+//                                                @RequestParam("image") MultipartFile image) throws JsonProcessingException
+    {
 
         ObjectMapper mapper = new ObjectMapper();
         UserRegisterDTO mapperUploadPostDTO = mapper.readValue(userRegisterDTO, UserRegisterDTO.class);
-        GetUser res = userService.register(mapperUploadPostDTO, image);
+        GetUser res = userService.register(mapperUploadPostDTO);
 
         return ResponseEntity
                 .status(ResponseCode.SUCCESS_REGISTER.getStatus().value())

@@ -21,7 +21,7 @@ public interface GetCommentList {
 
         String getEmail();
 
-        byte[] getImageData();
+//        byte[] getImageData();
 
         String getPhoneNum();
 
