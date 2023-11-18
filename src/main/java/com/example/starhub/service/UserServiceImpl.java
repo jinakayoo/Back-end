@@ -78,6 +78,11 @@ public class UserServiceImpl implements UserService{
         GetUser userInfo = new GetUser() {
 
             @Override
+            public Integer getUserId() {
+                return user.getUserId();
+            }
+
+            @Override
             public String getLoginId() {
                 return user.getLoginId();
             }
