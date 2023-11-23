@@ -73,6 +73,14 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
+    @Override
+    public void logout(String loginId) {
+        Optional<UserEntity> optionalUser = userRepository.findByLoginId(loginId);
+        optionalUser.ifPresent(user -> {
+            userRepository.delete(user);
+        });
+    }
+
 
     private GetUser EntityToProjectionUser(UserEntity user){
         GetUser userInfo = new GetUser() {

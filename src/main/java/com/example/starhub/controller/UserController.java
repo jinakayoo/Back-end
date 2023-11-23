@@ -49,5 +49,14 @@ public class UserController {
     }
 
 
+    @GetMapping("/logout")
+    public ResponseEntity<ResponseDTO> logout(@RequestParam("loginId") String loginId) {
+        userService.logout(loginId);
+
+        return ResponseEntity
+                .status(ResponseCode.SUCCESS_LOGOUT.getStatus().value())
+                .body(new ResponseDTO(ResponseCode.SUCCESS_LOGOUT, null));
+    }
+
 
 }

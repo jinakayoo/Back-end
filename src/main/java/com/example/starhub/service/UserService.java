@@ -8,4 +8,7 @@ public interface UserService {
 
     GetUser register(UserRegisterDTO userRegisterDTO);
     GetUser login(UserLoginDTO userLoginDTO);
+
+    void logout(String loginId);
+
 }
