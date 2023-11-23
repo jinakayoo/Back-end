@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class PostListResponseDto {
+    private Integer postId;
     private String skill;
-
     private String place;
     private Float latitude;
     private Float longitude;
@@ -32,6 +32,7 @@ public class PostListResponseDto {
     private String userName;
 
     public PostListResponseDto(PostEntity post) {
+        this.postId=post.getPostId();
         this.skill=post.getSkill();
         this.place=post.getPlace();
         this.longitude=post.getLongitude();
