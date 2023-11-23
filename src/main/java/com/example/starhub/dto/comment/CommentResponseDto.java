@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,7 +15,7 @@ public class CommentResponseDto {
     private Integer postId;
     private String content;
 
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     private String userName;
 
     private boolean pick;

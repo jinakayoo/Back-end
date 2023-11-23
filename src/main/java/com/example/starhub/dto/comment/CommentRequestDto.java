@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class CommentRequestDto {
 
     private String content;
 
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     private boolean pick;
 
