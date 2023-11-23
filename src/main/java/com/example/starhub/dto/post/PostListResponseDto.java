@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -27,7 +28,7 @@ public class PostListResponseDto {
 
     private String title;
 
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     private String userName;
 
@@ -41,7 +42,7 @@ public class PostListResponseDto {
         this.peopleNum=post.getPeopleNum();
         this.deadline=post.getDeadline();
         this.type=post.getType();
-        this.createdAt=post.getCreatedAt();
+        this.createdAt= LocalDate.from(post.getCreatedAt());
         this.title = post.getTitle();
         this.userName=post.getUser().getName();
     }

@@ -3,6 +3,7 @@ package com.example.starhub.dto.post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -29,7 +30,7 @@ public class PostRequestDto {
 
     private String content;
 
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     private Integer userId;
 }

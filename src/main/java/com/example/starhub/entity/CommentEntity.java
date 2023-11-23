@@ -11,6 +11,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -27,8 +28,7 @@ public class CommentEntity {
     private String content;
 
     @CreatedDate
-    private LocalDateTime createdAt;
-
+    private LocalDate createdAt;
     @Column
     private boolean pick;
 
@@ -45,7 +45,7 @@ public class CommentEntity {
 
     public CommentEntity(UserEntity user,PostEntity post, CommentRequestDto requestDto){
         this.content=requestDto.getContent();
-        this.createdAt=requestDto.getCreatedAt();
+        this.createdAt= LocalDate.from(requestDto.getCreatedAt());
         this.pick= requestDto.isPick();
         this.user=user;
         this.post=post;
