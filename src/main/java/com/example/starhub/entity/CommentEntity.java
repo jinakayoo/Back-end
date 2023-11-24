@@ -29,6 +29,7 @@ public class CommentEntity {
 
     @CreatedDate
     private LocalDate createdAt;
+
     @Column
     private boolean pick;
 
@@ -45,7 +46,7 @@ public class CommentEntity {
 
     public CommentEntity(UserEntity user,PostEntity post, CommentRequestDto requestDto){
         this.content=requestDto.getContent();
-        this.createdAt= LocalDate.from(requestDto.getCreatedAt());
+        this.createdAt= requestDto.getCreatedAt();
         this.pick= requestDto.isPick();
         this.user=user;
         this.post=post;

@@ -23,7 +23,7 @@ public class CommentResponseDto {
 
     public CommentResponseDto(CommentEntity comment){
         this.content=comment.getContent();
-        this.createdAt=comment.getCreatedAt();
+        this.createdAt=LocalDate.from(comment.getCreatedAt());
         this.pick=comment.isPick();
         this.postId=comment.getPost().getPostId();
         this.userName=comment.getUser().getName();
