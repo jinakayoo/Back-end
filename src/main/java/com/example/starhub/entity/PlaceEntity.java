@@ -9,7 +9,7 @@ public class PlaceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=255)
     private String placeName;
 
     @Column(nullable = false, length=20)

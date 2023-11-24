@@ -46,7 +46,7 @@ public class PostEntity{
     @Column(nullable = false, length=20)
     private String type;
 
-    @Column(nullable = false, length=20)
+    @Column(nullable = false, length=255)
     private String place;
 
     @Column(nullable = false)
