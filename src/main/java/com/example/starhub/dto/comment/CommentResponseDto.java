@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentResponseDto {
+    private Integer commentId;
     private Integer postId;
     private String content;
 
@@ -22,6 +23,7 @@ public class CommentResponseDto {
 
 
     public CommentResponseDto(CommentEntity comment){
+        this.commentId = comment.getId();
         this.content=comment.getContent();
         this.createdAt=LocalDate.from(comment.getCreatedAt());
         this.pick=comment.isPick();
