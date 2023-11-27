@@ -50,7 +50,16 @@ public class CommentServiceImpl implements CommentService{
         List<CommentEntity> commentList = commentRepository.findAllById(commentIdList);
         for (CommentEntity comment : commentList) {
             comment.setPick(true);
+
+            PostEntity postEntity = postRepository.findById(comment.getPost().getPostId()).orElse(null);
+
+            // PostEntity가 존재하고 있다면 done 값을 true로 설정
+            if (postEntity != null) {
+                postEntity.setDone(true);
+                postRepository.save(postEntity);
+            }
             commentRepository.save(comment);
+
         }
 
         List<CommentEntity> pickedComments = commentRepository.findAllByIdInAndPickIsTrue(commentIdList);
