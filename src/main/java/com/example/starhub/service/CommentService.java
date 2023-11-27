@@ -16,7 +16,7 @@ public interface CommentService {
 
     List<GetCommentList> pickComments(List<Integer> commentIdList);
 
-    List<GetCommentList> getPickedComments();
+    List<GetCommentList> getPickedComments(Integer postId);
 
 
 }

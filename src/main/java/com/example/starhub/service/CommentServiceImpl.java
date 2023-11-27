@@ -68,8 +68,8 @@ public class CommentServiceImpl implements CommentService{
         return result;
     }
 
-    public List<GetCommentList> getPickedComments() {
-        List<CommentEntity> pickedComments = commentRepository.findByPickIsTrue();
+    public List<GetCommentList> getPickedComments(Integer postId) {
+        List<CommentEntity> pickedComments = commentRepository.findByPickIsTrueAndPostPostId(postId);
         return convertToGetCommentList(pickedComments);
     }
 

@@ -51,9 +51,9 @@ public class CommentController {
     }
 
     @GetMapping("/pick/list")
-    public ResponseEntity<List<GetCommentList>> getPickedComments() {
+    public ResponseEntity<List<GetCommentList>> getPickedComments(@RequestParam("postId") Integer postId) {
         // CommentService를 사용하여 픽한 댓글 정보를 가져오는 메서드 호출
-        List<GetCommentList> pickedComments = commentService.getPickedComments();
+        List<GetCommentList> pickedComments = commentService.getPickedComments(postId);
 
         // ResponseEntity를 사용하여 응답 생성
         return new ResponseEntity<>(pickedComments, HttpStatus.OK);

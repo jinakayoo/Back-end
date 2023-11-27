@@ -11,5 +11,6 @@ public interface CommentRepository extends JpaRepository<CommentEntity, Integer>
     List<CommentResponseDto> findAllByPostPostId(Integer postId);
     List<CommentEntity> findAllByIdInAndPickIsTrue(List<Integer> commentIdList);
 
-    List<CommentEntity> findByPickIsTrue();
+    List<CommentEntity> findByPickIsTrueAndPostPostId(Integer postId);
+
 }
